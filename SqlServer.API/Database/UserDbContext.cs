@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SqlServer.API.Models;
+using System.Reflection;
 
 namespace SqlServer.API.Database;
 
@@ -7,32 +8,18 @@ public sealed class UserDbContext : DbContext, IDbContext
 {
     public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) { }
 
-    public DbSet<User> Users { get; set; }
-
     public new DbSet<TEntity> Set<TEntity>() where TEntity : class
     {
         return base.Set<TEntity>(); 
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public new  async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
-        optionsBuilder.UseSqlServer("Local-SqlServer");
+        return await base.SaveChangesAsync(cancellationToken);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>().HasKey(u => u.Id);
-
-        modelBuilder.Entity<User>().Property(u => u.UserName)
-            .IsRequired()
-            .HasMaxLength(20);
-
-        modelBuilder.Entity<User>().Property(u => u.Email)
-            .IsRequired()
-            .HasMaxLength(20);
-
-        modelBuilder.Entity<User>().Property(u => u.PasswordHash)
-            .IsRequired()
-            .HasMaxLength(20);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }
