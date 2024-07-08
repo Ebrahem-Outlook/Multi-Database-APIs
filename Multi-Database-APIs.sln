@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlLite.API", "SqlLite.API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle.API", "Oracle.API\Oracle.API.csproj", "{C1B137C5-CE8B-4E28-88AB-8BA2425A3EBC}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1E8E1357-8864-49A5-AD4F-1471C418A3A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C1B137C5-CE8B-4E28-88AB-8BA2425A3EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1B137C5-CE8B-4E28-88AB-8BA2425A3EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1B137C5-CE8B-4E28-88AB-8BA2425A3EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E8E1357-8864-49A5-AD4F-1471C418A3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8E1357-8864-49A5-AD4F-1471C418A3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8E1357-8864-49A5-AD4F-1471C418A3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8E1357-8864-49A5-AD4F-1471C418A3A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

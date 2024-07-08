@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostgreSql.API.Database;
+using PostgreSql.API.Services;
 
 namespace PostgreSql.API;
 
@@ -13,7 +14,7 @@ public static class DependencyInjection
 
         services.AddScoped<IDbContext, ContentDbContext>();
 
-        services.AddScoped<>
+        services.AddScoped<IContentService, ContentService>();
 
         return services;
     }

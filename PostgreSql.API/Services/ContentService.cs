@@ -1,18 +1,21 @@
-﻿using PostgreSql.API.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using PostgreSql.API.Database;
 using PostgreSql.API.Models;
 
 namespace PostgreSql.API.Services;
 
 internal sealed class ContentService(IDbContext dbContext) : IContentService
 {
-    public Task Create(Content content, CancellationToken cancellationToken = default)
+    public async Task Create(Content content, CancellationToken cancellationToken = default)
     {
-        dbContext.Set<Content>().AddAsync(content, cancellationToken);
+        await dbContext.Set<Content>().AddAsync(content, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public void Update(Content content)
+    public async Task Update(Content content, CancellationToken cancellationToken)
     {
         dbContext.Set<Content>().Update(content);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task Delete(Content content, CancellationToken cancellationToken)
@@ -21,20 +24,18 @@ internal sealed class ContentService(IDbContext dbContext) : IContentService
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public Task<IEnumerable<Content>> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Content>?> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await dbContext.Set<Content>().ToListAsync(cancellationToken);
     }
 
-    public Task<Content> GetByIdAsync(Content content, CancellationToken cancellationToken = default)
+    public async Task<Content?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await dbContext.Set<Content>().FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
     }
 
-    public Task<IEnumerable<Content>> GyByAuthorIdAsync(Content content, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Content>?> GyByAuthorIdAsync(int authorId, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await dbContext.Set<Content>().Where(c => c.AuthorId == authorId).ToListAsync(cancellationToken);
     }
-
-    
 }

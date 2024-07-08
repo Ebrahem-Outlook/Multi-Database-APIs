@@ -10,7 +10,7 @@ public interface IContentService
     Task Delete(Content content, CancellationToken cancellationToken = default);
 
     // Queries.
-    Task<IEnumerable<Content>> GetAllAsync(CancellationToken cancellationToken = default);
-    Task<Content> GetByIdAsync(Content content, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Content>> GyByAuthorIdAsync(Content content, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Content>?> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<Content?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Content>?> GyByAuthorIdAsync(int authroId, CancellationToken cancellationToken = default);
 }

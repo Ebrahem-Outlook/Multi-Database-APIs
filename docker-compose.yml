@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  sqlserver.api:
+    image: ${DOCKER_REGISTRY-}sqlserverapi
+    build:
+      context: .
+      dockerfile: SqlServer.API/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=mydatabase;User Id=sa;Password=Your_password123;
+    ports:
+      - "5000:80"  # Adjust the port as needed
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Your_password123"  # Set your SQL Server SA password here
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"  # SQL Server default port

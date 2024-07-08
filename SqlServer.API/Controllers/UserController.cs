@@ -17,6 +17,6 @@ public sealed class UserController(IUserService userService) : ControllerBase
         return Ok();
     }
 
-    [HttpGet]
+
 
 }

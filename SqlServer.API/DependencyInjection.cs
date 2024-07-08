@@ -8,7 +8,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddAPI(this IServiceCollection services, IConfiguration configuration)
     {
-        string? connectionString = configuration.GetConnectionString("Local-SqlServer");
+        // string? connectionString = configuration.GetConnectionString("Local-SqlServer");
+
+        string? connectionString = configuration.GetConnectionString("Docker-SqlServer");
 
         services.AddDbContext<UserDbContext>(options => options.UseSqlServer(connectionString));
 
