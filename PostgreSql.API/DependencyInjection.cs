@@ -10,9 +10,9 @@ public static class DependencyInjection
     {
         string? connectionString = configuration.GetConnectionString("Local-PostgreSql");
 
-        services.AddDbContext<ContentDbContext>(options => options.UseNpgsql(connectionString));
+        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
-        services.AddScoped<IDbContext, ContentDbContext>();
+        services.AddScoped<IDbContext, AppDbContext>();
 
         services.AddScoped<IContentService, ContentService>();
 

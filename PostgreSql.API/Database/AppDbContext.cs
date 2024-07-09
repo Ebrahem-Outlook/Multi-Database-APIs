@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace PostgreSql.API.Database;
 
-public sealed class ContentDbContext : DbContext, IDbContext
+public sealed class AppDbContext : DbContext, IDbContext
 {
-    public ContentDbContext(DbContextOptions<ContentDbContext> options) : base(options) { }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
     public new async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
