@@ -20,11 +20,11 @@ namespace SqlLite.API.Controllers
             return Ok(notifications);
         }
 
-        [HttpGet("Id")]
+        /*[HttpGet("Id")]
         public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken)
         {
             var notification = await notification.GetByIdAsync(id, cancellationToken);  
 
-        }
+        }*/
     }
 }

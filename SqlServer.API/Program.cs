@@ -1,5 +1,3 @@
-using SqlServer.API.Database;
-
 namespace SqlServer.API;
 
 public class Program
